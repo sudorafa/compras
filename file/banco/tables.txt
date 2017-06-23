@@ -1,0 +1,68 @@
+USE ATACADAO;
+
+CREATE TABLE Produto( idProduto int(8) auto_increment PRIMARY KEY,
+					  dataCadastro date,
+					  descProduto varchar(50)
+);
+
+CREATE TABLE Solicitacao(idSolicitacao int(8) auto_increment PRIMARY KEY,
+					 dataSolicitacao date,
+					 dataPrecisa date,
+					 severidade varchar(50),
+					 situacao varchar(50),
+					 detalhe varchar(50),
+					 dataPrevistaFim date,
+					 dataValidadeCotacao date,
+					 idProduto int(8) references Produto(idProduto)
+);
+
+CREATE TABLE Stat( idStatus int(8) auto_increment PRIMARY KEY,
+				   detalheStatus varchar(50),
+				   dataStatus date,
+				   statusSolicitacao varchar(50),
+				   idSolicitacao int(8) references Solicitacao(idSolicitacao),
+				   idUsuario int(8) references usuariosc(idusuario)
+);
+
+CREATE TABLE Fornecedor(idFornecedor int(8) auto_increment PRIMARY KEY,
+						nomeFornecedor varchar(35),
+						cnpj varchar(18),
+						telefone varchar(15),
+						cidade varchar(50),
+						cep varchar(9),
+						endereco varchar(50),
+						bairro varchar(50),
+						uf varchar(2),
+						email varchar(50),
+						bloqueio varchar(3)
+);
+
+CREATE TABLE Cotacao(idCotacao int(8) auto_increment PRIMARY KEY,
+					 valorCotado numeric(10,2),
+					 venceu varchar(3),
+					 dataCotacao date,
+					 statusCotacao varchar(50),
+					 idSolicitacao int(8) references Solicitacao(idSolicitacao),
+					 idProduto int(8) references Produto(idProduto),
+					 idFornecedor int(8) references Fornecedor(idFornecedor)
+);
+
+CREATE TABLE TipoFornecimento(idTipoFornecimento int(8) auto_increment PRIMARY KEY,
+							  descTipoFornecimento varchar(30)
+);
+
+CREATE TABLE ProduTipo(
+			 idTipoFornecimento int(8) references TipoFornecimento(idTipoFornecimento),
+			 idProduto int(8) references Produto(idProduto)
+);
+
+CREATE TABLE ForneceTipo(
+			 idTipoFornecimento int(8) references TipoFornecimento(idTipoFornecimento),
+			 idFornecedor int(8) references Fornecedor(idFornecedor)
+);
+
+
+insert into Perfil (descPerfil) values ('Admin');
+select idPerfil, descPerfil from Perfil;
+insert into Usuario (nome, cpf, usuario, senha, bloqueio, idPerfil) values ('Rafael Eduardo Lima', '090.213.814-60', 'rafa', '123', 'nao', 1000);
+select idUsuario, nome, cpf, usuario, senha, bloqueio, idPerfil from Usuario where idUsuario = idUsuario;

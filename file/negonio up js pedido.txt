@@ -1,0 +1,46 @@
+fazer js
+
+if gerente{
+	estando aberto{
+		if(reprovar){
+			detalhe vazio = false;
+		}
+		
+		if(aprovar){
+			dataCotacao vazio = false;
+			detalhe vazio = false;
+		}
+	}
+	
+	estando em cotação{
+		if(atualizar){
+			detalhe vazio = false;
+		}
+		
+		if(cancelar){
+			detalhe vazio = false;
+		}
+	}
+}
+
+if user{
+	estando aberto{
+		if(atualizar){
+			detalhe vazio = false;
+		}
+		
+		if(cancelar){
+			detalhe vazio = false;
+		}
+	}
+	
+	estando em cotação{
+		if(atualizar){
+			detalhe vazio = false;
+		}
+		
+		if(cancelar){
+			detalhe vazio = false;
+		}
+	}
+}
