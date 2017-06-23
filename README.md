@@ -1,4 +1,4 @@
-# compras
+# Compras
 Solução criada em 26 de Dezembro de 2016, em andamento.
 
 •	Sistema para gerenciar compras externa dentro de uma empresa, com acompanhamentos, aprovações, etc.
